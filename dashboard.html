@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SIGDH - Sistema Integrado de Gestão de Demandas Hospitalares">
+    <title>SIGDH | Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class="dashboard-page">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="sidebar-logo-icon">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+
+            <div class="sidebar-logo-text">
+                <strong>SIGDH</strong>
+                <span>Análise de Ofensores</span>
+            </div>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <div class="sidebar-menu-title">
+                Principal
+            </div>
+
+            <button
+                class="sidebar-link active"
+                data-section="dashboardSection"
+            >
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="demandasSection">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Demandas</span>
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="importarSection">
+                <i class="fa-solid fa-file-excel"></i>
+                <span>Importar Excel</span>
+            </button>
+
+            <div class="sidebar-menu-title">
+                Análises
+            </div>
+
+            <button
+                class="sidebar-link"
+                data-section="indicadoresSection">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Indicadores</span>
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="rankingSection">
+                <i class="fa-solid fa-ranking-star"></i>
+                <span>Ranking</span>
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="exportacaoSection">
+                <i class="fa-solid fa-download"></i>
+                <span>Exportação</span>
+            </button>
+
+            <div class="sidebar-menu-title">
+                Sistema
+            </div>
+
+            <button
+                class="sidebar-link"
+                data-section="historicoSection">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Histórico</span>
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="configuracoesSection">
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-user">
+
+            <div class="sidebar-user-info">
+
+                <div
+                    class="sidebar-avatar"
+                    id="sidebarAvatar">
+                    JD
+                </div>
+
+                <div>
+                    <div
+                        class="sidebar-user-name"
+                        id="sidebarUserName">
+                        Usuário
+                    </div>
+
+                    <div
+                        class="sidebar-user-role"
+                        id="sidebarUserRole">
+                        Usuário
+                    </div>
+                </div>
+
+            </div>
+
+            <button
+                class="logout-button"
+                id="logoutButton">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sair
+            </button>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Abrir menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <h1
+                    class="page-title"
+                    id="pageTitle">
+                    Dashboard
+                </h1>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button
+                    class="topbar-button"
+                    id="themeButton"
+                    title="Alterar tema">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button
+                    class="topbar-button"
+                    title="Notificações">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="topbar-user">
+
+                    <div
+                        class="topbar-avatar"
+                        id="topbarAvatar">
+                        JD
+                    </div>
+
+                    <div class="topbar-user-info">
+
+                        <div
+                            class="topbar-user-name"
+                            id="topbarUserName">
+                            Usuário
+                        </div>
+
+                        <div
+                            class="topbar-user-role"
+                            id="topbarUserRole">
+                            Usuário
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <div class="dashboard-content">
+
+            <section
+                class="content-section active"
+                id="dashboardSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Olá,
+                        <span id="welcomeUser">
+                            usuário
+                        </span>!
+                    </h2>
+
+                    <p>
+                        Visão geral das demandas analisadas.
+                        Importe sua planilha para começar.
+                    </p>
+
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <div>
+                            <div class="stat-label">
+                                Total de Demandas
+                            </div>
+
+                            <div
+                                class="stat-value"
+                                id="totalDemandas">
+                                0
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+                            <div class="stat-label">
+                                Processadas
+                            </div>
+
+                            <div
+                                class="stat-value"
+                                id="demandasProcessadas">
+                                0
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <div>
+                            <div class="stat-label">
+                                Demandas Críticas
+                            </div>
+
+                            <div
+                                class="stat-value"
+                                id="demandasCriticas">
+                                0
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+
+                        <div>
+                            <div class="stat-label">
+                                Confiança Média
+                            </div>
+
+                            <div
+                                class="stat-value"
+                                id="confiancaMedia">
+                                0%
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Importar planilha
+                            </h3>
+
+                            <p>
+                                Carregue o arquivo Excel que contém as demandas.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="upload-area"
+                        id="uploadArea">
+
+                        <i class="fa-solid fa-file-excel"></i>
+
+                        <h3>
+                            Arraste sua planilha aqui
+                        </h3>
+
+                        <p>
+                            Formatos aceitos:
+                            XLSX, XLS ou CSV.
+                            Os dados serão processados diretamente no navegador.
+                        </p>
+
+                        <label
+                            for="excelFile"
+                            class="upload-button">
+                            <i class="fa-solid fa-upload"></i>
+                            Selecionar arquivo
+                        </label>
+
+                        <input
+                            type="file"
+                            id="excelFile"
+                            accept=".xlsx,.xls,.csv">
+
+                        <div
+                            class="selected-file"
+                            id="selectedFile"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h3>
+                                    Demandas por classificação
+                                </h3>
+
+                                <p>
+                                    Distribuição dos ofensores identificados.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="classificationChart"></canvas>
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h3>
+                                    Prioridades
+                                </h3>
+
+                                <p>
+                                    Distribuição das prioridades.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="priorityChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Resumo por classificação
+                            </h3>
+
+                            <p>
+                                Quantidade de demandas identificadas.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="summary-list">
+
+                        <div class="summary-item">
+
+                            <div class="summary-item-header">
+                                <span class="summary-item-name">
+                                    MATERIAL
+                                </span>
+
+                                <span
+                                    class="summary-item-value"
+                                    id="materialCount">
+                                    0
+                                </span>
+                            </div>
+
+                            <div class="summary-track">
+                                <div
+                                    class="summary-bar"
+                                    id="materialBar"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-item-header">
+                                <span class="summary-item-name">
+                                    MEDICAMENTO
+                                </span>
+
+                                <span
+                                    class="summary-item-value"
+                                    id="medicamentoCount">
+                                    0
+                                </span>
+                            </div>
+
+                            <div class="summary-track">
+                                <div
+                                    class="summary-bar"
+                                    id="medicamentoBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-item-header">
+                                <span class="summary-item-name">
+                                    LOGISTICA
+                                </span>
+
+                                <span
+                                    class="summary-item-value"
+                                    id="logisticaCount">
+                                    0
+                                </span>
+                            </div>
+
+                            <div class="summary-track">
+                                <div
+                                    class="summary-bar"
+                                    id="logisticaBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-item-header">
+                                <span class="summary-item-name">
+                                    COMPRA
+                                </span>
+
+                                <span
+                                    class="summary-item-value"
+                                    id="compraCount">
+                                    0
+                                </span>
+                            </div>
+
+                            <div class="summary-track">
+                                <div
+                                    class="summary-bar"
+                                    id="compraBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <div class="summary-item-header">
+                                <span class="summary-item-name">
+                                    OPME
+                                </span>
+
+                                <span
+                                    class="summary-item-value"
+                                    id="opmeCount">
+                                    0
+                                </span>
+                            </div>
+
+                            <div class="summary-track">
+                                <div
+                                    class="summary-bar"
+                                    id="opmeBar">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Evolução das demandas
+                            </h3>
+
+                            <p>
+                                Quantidade de registros por período.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="evolutionChart"></canvas>
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Demandas recentes
+                            </h3>
+
+                            <p>
+                                Últimos registros processados.
+                            </p>
+                        </div>
+
+                        <button
+                            class="btn btn-secondary"
+                            data-section="demandasSection">
+                            Ver todas
+                        </button>
+
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Protocolo</th>
+                                    <th>Beneficiário</th>
+                                    <th>Classificação</th>
+                                    <th>Prioridade</th>
+                                    <th>Operadora</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="dashboardTable">
+
+                                <tr>
+                                    <td colspan="5">
+
+                                        <div class="empty-state">
+
+                                            <i class="fa-solid fa-file-import"></i>
+
+                                            <h3>
+                                                Nenhuma demanda importada
+                                            </h3>
+
+                                            <p>
+                                                Importe uma planilha Excel para visualizar os dados.
+                                            </p>
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="demandasSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Demandas
+                    </h2>
+
+                    <p>
+                        Consulte e filtre todas as demandas importadas.
+                    </p>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Filtros
+                            </h3>
+
+                            <p>
+                                Refine os registros exibidos.
+                            </p>
+                        </div>
+
+                        <button
+                            class="btn btn-secondary"
+                            id="clearFiltersButton">
+                            <i class="fa-solid fa-filter-circle-xmark"></i>
+                            Limpar
+                        </button>
+
+                    </div>
+
+
+                    <div class="filters">
+
+                        <input
+                            type="text"
+                            class="filter-input"
+                            id="filterSearch"
+                            placeholder="Protocolo, beneficiário..."
+                        >
+
+                        <select
+                            class="filter-select"
+                            id="filterClassification"
+                        >
+                            <option value="">
+                                Todas as classificações
+                            </option>
+
+                            <option value="MATERIAL">
+                                MATERIAL
+                            </option>
+
+                            <option value="MEDICAMENTO">
+                                MEDICAMENTO
+                            </option>
+
+                            <option value="LOGISTICA">
+                                LOGISTICA
+                            </option>
+
+                            <option value="COMPRA">
+                                COMPRA
+                            </option>
+
+                            <option value="OPME">
+                                OPME
+                            </option>
+
+                            <option value="OUTROS">
+                                OUTROS
+                            </option>
+                        </select>
+
+
+                        <select
+                            class="filter-select"
+                            id="filterPriority"
+                        >
+                            <option value="">
+                                Todas as prioridades
+                            </option>
+
+                            <option value="ALTA">
+                                ALTA
+                            </option>
+
+                            <option value="MEDIA">
+                                MEDIA
+                            </option>
+
+                            <option value="BAIXA">
+                                BAIXA
+                            </option>
+                        </select>
+
+
+                        <select
+                            class="filter-select"
+                            id="filterOperator"
+                        >
+                            <option value="">
+                                Todas as operadoras
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Registros
+                            </h3>
+
+                            <p id="filteredCount">
+                                0 demandas encontradas
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Protocolo</th>
+                                    <th>Registro</th>
+                                    <th>Beneficiário</th>
+                                    <th>Operadora</th>
+                                    <th>Prestador</th>
+                                    <th>Classificação</th>
+                                    <th>Prioridade</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="demandasTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 IMPORTAR
+            ================================================== -->
+
+            <section
+                class="content-section"
+                id="importarSection"
+            >
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Importar Excel
+                    </h2>
+
+                    <p>
+                        Faça o carregamento e processamento da sua base de demandas.
+                    </p>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div
+                        class="upload-area"
+                        id="uploadAreaPage"
+                    >
+
+                        <i class="fa-solid fa-file-excel"></i>
+
+                        <h3>
+                            Selecione sua planilha
+                        </h3>
+
+                        <p>
+                            O sistema irá ler a primeira aba da planilha,
+                            identificar os campos e processar as demandas.
+                        </p>
+
+                        <label
+                            for="excelFilePage"
+                            class="upload-button"
+                        >
+                            <i class="fa-solid fa-folder-open"></i>
+                            Escolher arquivo
+                        </label>
+
+                        <input
+                            type="file"
+                            id="excelFilePage"
+                            accept=".xlsx,.xls,.csv">
+
+                        <div
+                            class="selected-file"
+                            id="selectedFilePage"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="indicadoresSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Indicadores
+                    </h2>
+
+                    <p>
+                        Indicadores calculados a partir da planilha importada.
+                    </p>
+
+                </div>
+
+                <div class="indicator-grid">
+
+                    <div class="indicator-card">
+
+                        <div class="indicator-card-title">
+                            Total processado
+                        </div>
+
+                        <div
+                            class="indicator-card-value"
+                            id="indicatorTotal">
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <div class="indicator-card">
+
+                        <div class="indicator-card-title">
+                            Prioridade alta
+                        </div>
+
+                        <div
+                            class="indicator-card-value"
+                            id="indicatorAlta">
+                            0
+                        </div>
+
+                    </div>
+
+                    <div class="indicator-card">
+
+                        <div class="indicator-card-title">
+                            Classificação principal
+                        </div>
+
+                        <div
+                            class="indicator-card-value"
+                            id="indicatorPrincipal">
+                            -
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Distribuição das demandas
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="indicatorChart"></canvas>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="rankingSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Ranking de Ofensores
+                    </h2>
+
+                    <p>
+                        Classificações com maior quantidade de demandas.
+                    </p>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="chart-container">
+                        <canvas id="rankingChart"></canvas>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="exportacaoSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Exportação
+                    </h2>
+
+                    <p>
+                        Exporte os dados processados pelo SIGDH.
+                    </p>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="upload-area">
+
+                        <i class="fa-solid fa-file-arrow-down"></i>
+
+                        <h3>
+                            Exportar demandas
+                        </h3>
+
+                        <p>
+                            Gere um novo arquivo Excel com os dados
+                            processados e classificados.
+                        </p>
+
+                        <button
+                            class="btn btn-primary"
+                            id="exportExcelButton">
+                            <i class="fa-solid fa-file-excel"></i>
+                            Exportar Excel
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="historicoSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Histórico
+                    </h2>
+
+                    <p>
+                        Histórico das planilhas importadas.
+                    </p>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-wrapper">
+
+                        <table class="data-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Arquivo</th>
+                                    <th>Data</th>
+                                    <th>Registros</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="historyTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-section"
+                id="configuracoesSection">
+
+                <div class="welcome-section">
+
+                    <h2>
+                        Configurações
+                    </h2>
+
+                    <p>
+                        Preferências do sistema.
+                    </p>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>
+                                Interface
+                            </h3>
+
+                            <p>
+                                Personalize a aparência do dashboard.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        id="settingsThemeButton">
+                        <i class="fa-solid fa-moon"></i>
+                        Alternar tema
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js">
+</script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
